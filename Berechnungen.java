@@ -1,7 +1,7 @@
 package wuerfeltest;
 
 /**
- * fÃ¼hrt alle geforderten Berechnungen durch
+ * führt alle geforderten Berechnungen durch
  * @author richard
  *
  */
@@ -13,7 +13,7 @@ public class Berechnungen {
 	
 	/**
 	 * Konstruktor
-	 * @param anzahlVersuche
+	 * @param anzahlVersuche Anzahl der Würfe des zu testenden Würfels
 	 */
 	public Berechnungen(int anzahlVersuche) {
 		this.anzahlVersuche = anzahlVersuche;
@@ -21,17 +21,22 @@ public class Berechnungen {
 	
 	/**
 	 * initialisiert eine Instanz der Klasse Kontrolle und ruft an dieser die Steuerfunktion aus, um dem ereignisse Array Werte zuzuweisen.
-	 * @return um dem UML konform zu bleiben, gibt es die Instanz der Kontrollklasse zurÃ¼ck, eigentlich wÃ¤re es schlauer, wenn da void stehen wÃ¼rde
+	 * @return um dem UML konform zu bleiben, gibt es die Instanz der Kontrollklasse zurück, eigentlich wäre es schlauer, wenn da void stehen würde
 	 */
 	public Kontrolle initialisiereKontrolle() {
 		Kontrolle kontrolle1 = new Kontrolle(anzahlVersuche);
 		ereignisse = kontrolle1.steuerfunktion();
+	// Debug: Works till here	
+	//	for(int i = 0; i<ereignisse.length; i++) {
+	//		System.out.println(ereignisse[i]);
+	//	}
+
 		return kontrolle1;
 	}
 	
 	/**
-	 * berechnet die relative HÃ¤ufigkeit fÃ¼r jedes Feld des ereignisse-Arrays, auÃŸer dem Nullten. Dies geschieht fÃ¼r jedes Wurfergebnis nach der Formel: absolute HÃ¤ufigkeit/Anzahl der Versuche
-	 * @return gibt einen double Array der LÃ¤nge des WÃ¼rfels+1 zurÃ¼ck, an jeder Stelle dieses Arrays steht die entsprechende relative HÃ¤ufigkeit
+	 * berechnet die relative Häufigkeit für jedes Feld des ereignisse-Arrays, außer dem Nullten. Dies geschieht für jedes Wurfergebnis nach der Formel: absolute Häufigkeit/Anzahl der Versuche
+	 * @return gibt einen double Array der Länge des Würfels+1 zurück, an jeder Stelle dieses Arrays steht die entsprechende relative Häufigkeit
 	 */
 	public double[] relativeHaeufigkeitsberechnung() {
 		double relativeHaeufigkeiten[] = new double[ereignisse.length];
@@ -42,8 +47,8 @@ public class Berechnungen {
 	}
 	
 	/**
-	 * berechnet die absoluten Fehler fÃ¼r jeden Wert aus dem aktuellen Feld des ereignisse-Arrays ab dem ersten Feld, nach der Formel: relative HÃ¤ufigkeit/mathematische Wahrscheinlichkeit des WÃ¼rfelwurfs
-	 * @return gibt einen double-Array von der LÃ¤nge des ereignisse-Arrays zurÃ¼ck, an jeder Stelle des Arrays stehen die entsprechenden absoluten Fehler fÃ¼r die aktuelle Zahl
+	 * berechnet die absoluten Fehler für jeden Wert aus dem aktuellen Feld des ereignisse-Arrays ab dem ersten Feld, nach der Formel: relative Häufigkeit/mathematische Wahrscheinlichkeit des Würfelwurfs
+	 * @return gibt einen double-Array von der Länge des ereignisse-Arrays zurück, an jeder Stelle des Arrays stehen die entsprechenden absoluten Fehler für die aktuelle Zahl
 	 */
 	public double[] berechneAbsoluteFehler() {
 		double absoluteFehler[] = new double[ereignisse.length];
@@ -57,8 +62,8 @@ public class Berechnungen {
 	}
 	
 	/**
-	 * berechnet die relativen Fehler fÃ¼r jeden Wert aus dem aktuellen Feld des ereignisse-Arrays ab dem ersten Feld, nach der Formel: |absolute Fehler/mathematische Wahrscheinlichkeit des WÃ¼rfelwurfs
-	 * @return gibt einen double-Array von der LÃ¤nge des ereignisse-Arrays zurÃ¼ck, an jeder Stelle des Arrays stehen die entsprechenden relativen Fehler fÃ¼r die aktuelle Zahl
+	 * berechnet die relativen Fehler für jeden Wert aus dem aktuellen Feld des ereignisse-Arrays ab dem ersten Feld, nach der Formel: |absolute Fehler/mathematische Wahrscheinlichkeit des Würfelwurfs
+	 * @return gibt einen double-Array von der Länge des ereignisse-Arrays zurück, an jeder Stelle des Arrays stehen die entsprechenden relativen Fehler für die aktuelle Zahl
 	 */
 	public double[] berechneRelativeFehler() {
 		double relativeFehler[] = new double[ereignisse.length];
@@ -71,8 +76,8 @@ public class Berechnungen {
 	}
 	
 	/**
-	 * erzeugt einen Stringbuilder, dem alle relevanten Daten mÃ¶glichst Ã¼bersichtlich angehÃ¤ngt wurden
-	 * @return gibt eine textuelle ReprÃ¤sentation aller Rechenergebnisse zurÃ¼ck. Die toString Methode wird benutzt, um dem UML treu zu bleiben und einen String (keinen StringBuilder) zurÃ¼ck zu geben.
+	 * erzeugt einen Stringbuilder, dem alle relevanten Daten möglichst übersichtlich angehängt wurden
+	 * @return gibt eine textuelle Repräsentation aller Rechenergebnisse zurück. Die toString Methode wird benutzt, um dem UML treu zu bleiben und einen String (keinen StringBuilder) zurück zu geben.
 	 */
 	public String ausgabeFunktion() {
 		StringBuilder ausgabe = new StringBuilder();
@@ -82,7 +87,7 @@ public class Berechnungen {
 		ausgabe.append("\n====================================================\n");
 		ausgabe.append("\nResultate nach Wurfergebnissen:\n\n");
 		for (int i=1; i<ereignisse.length; i++) {
-			ausgabe.append("Wurfergebnis: " + i + "\n\t" + " | relative HÃ¤ufigkeit: " + relativeHaeufigkeiten[i] + "\n\t | absoluter Fehler: " + absoluteFehler[i] + "\n\t | relativer Fehler: " + relativeFehler[i]+ "\n\t | berechnete Wahrscheinlichkeit: " + 1.0/(ereignisse.length-1) + "\n");
+			ausgabe.append("Wurfergebnis: " + i + "\n\t" + " | relative Häufigkeit: " + relativeHaeufigkeiten[i] + "\n\t | absoluter Fehler: " + absoluteFehler[i] + "\n\t | relativer Fehler: " + relativeFehler[i]+ "\n\t | berechnete Wahrscheinlichkeit: " + 1.0/(ereignisse.length-1) + "\n");
 		}
 		ausgabe.append("\n====================================================\n");
 		return ausgabe.toString();
