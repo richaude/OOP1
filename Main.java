@@ -1,11 +1,18 @@
-package Würfeltest;
+package wuerfeltest;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
+/**
+ * Einsprungs-Klasse für die virtuelle Maschine
+ * @author Lukas
+ *
+ */
 public class Main {
-
+	/**
+	 * Fragt nach Anzahl der Würfe des zu testenden Würfels, erzeugt eine neue Kontrolle-Instanz und beginnt den Test
+	 * @param args Parameter der Eingabeaufforderung werden ignoriert
+	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 

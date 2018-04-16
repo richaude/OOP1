@@ -1,20 +1,33 @@
-package Würfeltest;
+package wuerfeltest;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
+/**
+ * 
+ * unabhängiger Würfel mit variabler Augenzahl
+ * @author Lukas
+ *
+ */
 public class Kontrolle {
 	private Wuerfel wuerfel1;
 	private Berechnungen berechnungen1;
 	private int anzahlVersuche;
+	
+	/**
+	 * Konstruktor
+	 * @param anzahlVersuche Anzahl der Würfe des zu testenden Würfels
+	 */
 	
 	public Kontrolle(int anzahlVersuche) {
 		this.anzahlVersuche = anzahlVersuche;
 	}
 	
 	
-	
+	/**
+	 * Fragt nach geforderter Augenzahl, erstellt den Würfel und führt die Würfe durch, befüllt dabei ein Int-Array
+	 * @return Das gefüllte Int-Array mit den absoluten Häufigkeiten
+	 */
 	public int[] steuerfunktion() {
 		// Initialisierung
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -50,10 +63,14 @@ public class Kontrolle {
 		//Gib fertiges Array zurück
 		return ereignisse;
 	}
-	public void beginneTest() {
 	
+	/**
+	 * Lenkt den Programm-Ablauf möglichst UML-Konform und die Reihenfolge der Aufrufe der Methoden
+	 */
+	public void beginneTest() {
+		berechnungen1 = new Berechnungen(anzahlVersuche);
 		berechnungen1.initialisiereKontrolle();
-		// Soll Kontrolle instanziieren, um mittels SteuerFunktion das Array zu befüllen
+		System.out.println(berechnungen1.ausgabeFunktion());
 	}
 	
 }
