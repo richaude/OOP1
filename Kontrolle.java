@@ -31,11 +31,11 @@ public class Kontrolle {
 	public int[] steuerfunktion() {
 		// Initialisierung
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		String eingabe1 = ""; String eingabe2 = "";
+		String eingabe1 = "";
 		int augenZahl;
 		
 		// Augenzahl einlesen
-		System.out.println("Bitte geben sie die Augenzahl des zu Testenden Würfels ein! (Bitte realistisch bleiben)");
+		System.out.println("Bitte geben sie die maximale Augenzahl des zu Testenden Würfels ein! (Bitte realistisch bleiben)");
 		try {
 			eingabe1 = br.readLine();
 		}
@@ -71,6 +71,8 @@ public class Kontrolle {
 		berechnungen1 = new Berechnungen(anzahlVersuche);
 		berechnungen1.initialisiereKontrolle();
 		System.out.println(berechnungen1.ausgabeFunktion());
+		System.out.println("\n\n");
+
 	}
 	
 }
