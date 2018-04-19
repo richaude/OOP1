@@ -44,17 +44,17 @@ public class Kontrolle {
 		}
 		catch(IOException ioex) {
 			System.out.println("Fehler beim Einlesen der Augenzahl!");
-			ioex.printStackTrace();
+		//	ioex.printStackTrace();
 			return null;
 		}
 		catch(NumberFormatException nfex) {
 			System.out.println("Zu groﬂe Augenzahl/Buchstaben eingegeben!");
-			nfex.printStackTrace();
+		//	nfex.printStackTrace();
 			return null;
 		}
 		catch(Throwable t) {
 			System.out.println("Du hast nichts Realistisches eingegeben!");
-			t.printStackTrace();
+		//	t.printStackTrace();
 			return null;
 		}
 

@@ -15,12 +15,13 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		// Führe Abbruchvariable ein
-		boolean b = true;
+		boolean b = true; 
 		
 		// Beginne den Test in einer mind. 1 mal durchgeführten Schleife
 		do {
 			
 			// Versuchsanzahl einlesen und Kontrolle initialisieren
+				boolean abbruch = false;
 				// Erzeuge Eingabe-Stream
 				BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 				
@@ -39,33 +40,39 @@ public class Main {
 				catch(IOException ioex) {
 					// Gib Fehlermeldung bei Input-/Output-Problemen aus
 					System.out.println("Fehler beim Einlesen der Versuchsanzahl!");
-					ioex.printStackTrace();
+					//ioex.printStackTrace();
+					abbruch = true;
 				}
 				catch(NumberFormatException nfex) {
 					// Gib Fehlermeldung bei Problemen mit der Darstellung der Zahlen, hier Anzahl der Würfe, aus
 					System.out.println("Zu große Zahl/Buchstaben eingegeben!");
-					nfex.printStackTrace();
-					return;
+					//nfex.printStackTrace();
+					abbruch = true;
 				}
 				catch(Throwable t) {
 					System.out.println("Du hast nichts Realistisches eingegeben!");
-					t.printStackTrace();
+					//t.printStackTrace();
+					abbruch = true;
 				}
 			
 			//Abfangen von unsinnigen Eingaben (Wurf-Anzahl -> 0)
 			if(versuchsZahl <= 0) {
 				System.out.println("Nicht oder negativ zu Würfeln macht bei einem Würfeltest keinen Sinn! Versuch's nochmal!");
-				return;
+				abbruch = true;
 			}
-		
-			// Initiiere Kontrolle und überlasse beginneTest() alles weitere
-			Kontrolle k = new Kontrolle(versuchsZahl);
-			k.beginneTest();
-		
-			// Frage nach dem Weiterausführen des Programms für einen neuen Test
+			
+			
+			
+			if(!abbruch) {
+				// Initiiere Kontrolle und überlasse beginneTest() alles weitere
+				Kontrolle k = new Kontrolle(versuchsZahl);
+				k.beginneTest();
+			}	
+				
+				// Frage nach dem Weiterausführen des Programms für einen neuen Test
 			System.out.println("Wollen sie einen weiteren Test durchführen? (Y/N)");
 			String s = new String("");
-		
+			
 			try {
 				s = br.readLine().toLowerCase();
 			}
@@ -74,7 +81,7 @@ public class Main {
 				ioex.printStackTrace();
 			}
 			
-			// Wenn n eingegeben wird, beende das Programm über die Abbruchbedingung der Do-While-Schleife, sonst fahre fort
+				// Wenn n eingegeben wird, beende das Programm über die Abbruchbedingung der Do-While-Schleife, sonst fahre fort
 			if (s.equals("n")) {
 				b = false;
 				System.out.println("\nBis zum nächsten Mal!");

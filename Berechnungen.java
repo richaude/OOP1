@@ -76,6 +76,10 @@ public class Berechnungen {
 	 * @return gibt eine textuelle Repräsentation aller Rechenergebnisse zurück. Die toString Methode wird benutzt, um dem UML treu zu bleiben und einen String (keinen StringBuilder) zurück zu geben.
 	 */
 	public String ausgabeFunktion() {
+		if(ereignisse == null) {
+			return new String("Die Augenzahl des W�rfels konnte nicht richtig umgesetzt werden..");
+		}
+		
 		StringBuilder ausgabe = new StringBuilder();
 		double[] relativeHaeufigkeiten = relativeHaeufigkeitsberechnung();
 		double[] absoluteFehler = berechneAbsoluteFehler();
