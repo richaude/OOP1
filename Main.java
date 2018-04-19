@@ -43,13 +43,18 @@ public class Main {
 				}
 				catch(NumberFormatException nfex) {
 					// Gib Fehlermeldung bei Problemen mit der Darstellung der Zahlen, hier Anzahl der Würfe, aus
-					System.out.println("Zu große Zahl eingegeben!");
+					System.out.println("Zu große Zahl/Buchstaben eingegeben!");
 					nfex.printStackTrace();
+					return;
+				}
+				catch(Throwable t) {
+					System.out.println("Du hast nichts Realistisches eingegeben!");
+					t.printStackTrace();
 				}
 			
 			//Abfangen von unsinnigen Eingaben (Wurf-Anzahl -> 0)
-			if(versuchsZahl == 0) {
-				System.out.println("Nicht zu Würfeln macht bei einem Würfeltest keinen Sinn! Versuch's nochmal!");
+			if(versuchsZahl <= 0) {
+				System.out.println("Nicht oder negativ zu Würfeln macht bei einem Würfeltest keinen Sinn! Versuch's nochmal!");
 				return;
 			}
 		

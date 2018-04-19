@@ -45,15 +45,22 @@ public class Kontrolle {
 		catch(IOException ioex) {
 			System.out.println("Fehler beim Einlesen der Augenzahl!");
 			ioex.printStackTrace();
+			return null;
 		}
 		catch(NumberFormatException nfex) {
-			System.out.println("Zu große Augenzahl eingegeben!");
+			System.out.println("Zu große Augenzahl/Buchstaben eingegeben!");
 			nfex.printStackTrace();
+			return null;
+		}
+		catch(Throwable t) {
+			System.out.println("Du hast nichts Realistisches eingegeben!");
+			t.printStackTrace();
+			return null;
 		}
 
 		
 		// Unsinnige Eingabe wird abgefangen (Augenzahl -> 0)
-		if(augenZahl == 0) {
+		if(augenZahl <= 0) {
 			System.out.println("Ein Würfel ohne würfelbare Ereignisse macht keinen Sinn! Programm bricht ab.");
 			return null;
 		}
